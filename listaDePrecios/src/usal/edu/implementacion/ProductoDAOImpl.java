@@ -11,7 +11,7 @@ public class ProductoDAOImpl implements ProductoDAO{
 	
 	public void add(Producto producto,ArrayList<Producto>lista) {
 		lista.add(producto);
-		
+		IOGeneral.pritln("se agrego " + producto.getNombre() + " con exito");
 	}
 
 
@@ -21,7 +21,7 @@ public class ProductoDAOImpl implements ProductoDAO{
 				lista.remove(i);
 			}
 		}
-		
+
 	}
 
 	public void mod(String nombre, Producto producto,ArrayList<Producto>lista) {
@@ -53,6 +53,18 @@ public class ProductoDAOImpl implements ProductoDAO{
 			"precio: "+lista.get(i).getPrecio()+"||"+
 			"tipo: "+ lista.get(i).getTipo());
 		}
+	}
+
+
+	
+	public boolean existeProducto(String nombre,ArrayList<Producto>lista) {
+		boolean ok = false;
+		for(int i = 0; i < lista.size();i++) {
+			if(lista.get(i).getNombre() == nombre) {
+				ok = true;
+			}
+		}
+		return ok;
 	}
 
 }

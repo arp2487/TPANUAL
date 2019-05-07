@@ -10,4 +10,5 @@ public interface ProductoDAO {
 	public void mod(String nombre, Producto producto,ArrayList<Producto>lista);
 	public Producto mostrarProducto(String nombre, ArrayList<Producto> lista);
 	public void mostrarLista(ArrayList<Producto> lista);
+	public boolean existeProducto(String nombre,ArrayList<Producto>lista);
 }

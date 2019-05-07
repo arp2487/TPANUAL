@@ -34,31 +34,43 @@ public class main {
 		if(op == 2) {
 			ProductoDAO pd = new ProductoDAOImpl();
 			Producto pr = new Producto();
-			pr.setNombre(IOGeneral.leerFrase("ingresar nombre de producto "));
+			String nombre = IOGeneral.leerFrase("ingrese nombre: ");
+			if(pd.existeProducto(nombre, lista) == true) {
+			pr.setNombre(nombre);
 			pr.setMarca(IOGeneral.leerFrase("ingresar marca "));
 			pr.setPrecio(IOGeneral.leerFloat("ingresar precio ", "valor no valido ingrese precio"));
 			pr.setTipo(IOGeneral.leerFrase("ingresar tipo "));
 			pd.remove(pr, lista);
+			}else {
+				IOGeneral.pritln("no existe "+ nombre);
+			}
 		}
 		if(op == 3) {
-			String nombre = IOGeneral.leerFrase("ingrese producto a modifica");
+			String nombre = IOGeneral.leerFrase("ingrese producto a modificar");
 			ProductoDAO pd = new ProductoDAOImpl();
 			Producto pr = new Producto();
+			if(pd.existeProducto(nombre, lista)== true){
 			pr.setNombre(IOGeneral.leerFrase("ingresar nombre de producto "));
 			pr.setMarca(IOGeneral.leerFrase("ingresar marca "));
 			pr.setPrecio(IOGeneral.leerFloat("ingresar precio ", "valor no valido ingrese precio"));
 			pr.setTipo(IOGeneral.leerFrase("ingresar tipo "));
 			pd.mod(nombre, pr, lista);
+			}else {
+				IOGeneral.pritln("no existe "+nombre);
+			}
 		}
 		if(op == 4) {
 			String nombre = IOGeneral.leerFrase("ingrese producto a mostrar: ");
 			ProductoDAO pd = new ProductoDAOImpl();
+			if(pd.existeProducto(nombre, lista) == true) {
 			pd.mostrarProducto(nombre, lista);
 			IOGeneral.pritln("nombre: "+pd.mostrarProducto(nombre, lista).getNombre()+"||"+
 			"marca: "+pd.mostrarProducto(nombre, lista).getMarca()+"||"+
 			"precio: "+pd.mostrarProducto(nombre, lista).getPrecio()+"||"+
 			"tipo: "+ pd.mostrarProducto(nombre, lista).getTipo());
-			
+			}else {
+				IOGeneral.pritln("no existe "+nombre);
+			}
 		}
 		if(op == 5) {
 			prd.mostrarLista(lista);
