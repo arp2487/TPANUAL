@@ -1,0 +1,2 @@
+leche;seenisima;40.0;lacteo
+queso;serenisima;50.0;lacteo
